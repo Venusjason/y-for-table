@@ -87,3 +87,60 @@ export const getMySlots = (fieldContext, context, slotName = '*') => {
     return vnode
   })
 }
+
+export const transformDataSource = (dataSource = {}) => {
+  const type = getType(dataSource)
+  let data = null
+  switch (type) {
+    case 'array':
+      data = dataSource.map(ele => {
+        const eleType = getType(ele)
+        if (eleType === 'object') {
+          return ele
+        } else {
+          return {
+            label: ele,
+            value: ele,
+          }
+        }
+      })
+      break
+    default:
+      data = Object.keys(dataSource).map(key => ({
+        label: dataSource[key],
+        value: key,
+      }))
+  }
+  return data
+}
+/**
+ * 计算出 form formItem 共同属性的值
+ * 规则 优先级 form < field
+ */
+export const computedFormSameProps = (form, field) => {
+  let colon = false
+  if (field.colon === undefined) {
+    colon = form.colon || false
+  } else {
+    colon = field.colon
+  }
+  if (colon) {
+    colon = (colon === true ? '：' : colon)
+  } else {
+    colon = ''
+  }
+  const fieldStatus = field.fieldStatus || form.formStatus || 'edit'
+  return {
+    colon,
+    fieldStatus,
+    disabled: fieldStatus === 'disabled',
+  }
+}
+
+export const getMyProps = (component, context) => {
+  const props = {}
+  Object.keys(component.props).forEach(key => {
+    props[key] = context[key]
+  })
+  return props
+}

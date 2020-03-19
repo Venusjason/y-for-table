@@ -2,18 +2,21 @@
   <div id="app">
     <SimpleForm />
     <SimpleIviewform />
+    <TableList />
   </div>
 </template>
 
 <script>
 import SimpleForm from './examples/SimpleForm'
 import SimpleIviewform from './examples/SimpleIviewform'
+import TableList from './examples/TableList'
 
 export default {
   name: 'App',
   components: {
     SimpleForm,
-    SimpleIviewform
+    SimpleIviewform,
+    TableList,
   }
 }
 </script>

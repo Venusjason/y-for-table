@@ -17,8 +17,8 @@ export const validatorFunc = (regRule) => {
   return { validator }
 }
 
-export const required = (label = '此项') => ({
-  required: true, message: `${label}必填`
+export const required = (label) => ({
+  required: true, message: `${label || '此项'}必填`
 })
 
 // 长度限制
