@@ -1,5 +1,6 @@
 export { default as YForm } from './Form'
 export { default as YField, CreateVModelComponent } from './Field'
 export { default as YTable } from './Table'
-export { default as YQueryTable } from './QueryTable'
+export { default as YQueryTable, CreateQueryTable } from './QueryTable'
 export { default as YButton, CreateYButton } from './Button'
+export { extendRules } from '../packages/rules'

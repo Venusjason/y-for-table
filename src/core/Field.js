@@ -37,7 +37,6 @@ export const CreateVModelComponent = (Component, fieldContext) => {
 
   if (ComponentType === 'string') {
     if (!registerComponents[Component]) {
-      log.warn(`${Component}需要全局注册到Y-For-Table的opts.registerComponents`)
       Component = registerComponents[defaultComponent]
     } else {
       Component = registerComponents[Component]
@@ -51,6 +50,7 @@ export const CreateVModelComponent = (Component, fieldContext) => {
     props: ComponentProps,
     render(h) {
       // 将yfield 上的slot 放到input里
+      // TODO: 优化 去掉 slot label
       const slots = getMySlots(fieldContext, this, '*')
       const value = FormContext.getFieldValue(name)
       const { previewValue } = fieldContext
@@ -182,7 +182,19 @@ const Field = {
       if (Object.prototype.hasOwnProperty.call(registerComponents, component)) {
         component = registerComponents[component]
       } else {
-        log.error(`标签名${component}未注册，请先到注册的tags里声明`)
+        log.error(`
+        标签名${component}未注册，请先到注册的YField opts.registerComponents里声明 示例如下：
+        main.js文件
+        Vue.use(YField, {
+          registerComponents: {
+            ${component}: ${component},
+            ...
+          }
+        })
+        `)
+        if (!defaultComponent) {
+          log.warn('建议你声明一个defaultComponent')
+        }
         component = registerComponents[defaultComponent]
       }
     }
@@ -193,12 +205,17 @@ const Field = {
     let label = null
     if (getType(FormItemProps.label) === 'string') {
       label = FormItemProps.label ? `${FormItemProps.label}${helperProps.colon}` : ''
-    } else if (getType(FormItemProps.label) === 'object') {
-      // vnode
-      label = FormItemProps.label
+    } else {
+      log.warn(`
+        ${name}字段, 如果你需要 VNode 类型的label，你应该使用如下写法这样处理：
+        <YField name="name" >
+          <div slot="label">label ...</div>
+        </YField>
+      `)
     }
 
     const labelStr = (getType(label) === 'string' && label) || ''
+    let slots = getMySlots(this, this, 'label')
 
     return h(ELFormItem, {
       props: {
@@ -214,8 +231,14 @@ const Field = {
       },
       attrs: this.$attrs,
       key: name,
+      // slots: {
+      //   label: () => h(getType(label) !== 'string' && label),
+      // },
+      // slots: () => ({
+      //   label: h(getType(label) !== 'string' && label),
+      // }),
     }, [
-      getType(label) !== 'string' && label,
+      ...slots,
       h(this.Input)
     ])
   }

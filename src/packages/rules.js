@@ -1,4 +1,5 @@
 import { getType } from './utils'
+import Log from './log'
 
 
 /**
@@ -58,6 +59,10 @@ export const regs = {
     '网址格式有误'
   ],
 }
+
+export const extendRules = (data = {}) => {
+  Object.assign(regs, data)
+}
 // 快捷校验
 const quicklyRules = {}
 Object.keys(regs).forEach(key => {
@@ -66,13 +71,13 @@ Object.keys(regs).forEach(key => {
 
 export const rulelistLog = () => {
   if (process.env.NODE_ENV !== 'development') return
-  console.warn('当前快捷校验已支持以下')
+  Log.warn('当前快捷校验已支持以下')
   const arr = Object.keys(regs).map(key => ({
     ruleName: key,
     reg: regs[key][0],
     message: regs[key][1]
   }))
-  console.table(arr.concat([
+  Log.table(arr.concat([
     { ruleName: 'required', reg: '', message: '{label}必填' },
   ]))
 }
@@ -86,7 +91,7 @@ export const computedRules = (rules, label, name) => {
     if (quicklyRules[rules]) {
       return quicklyRules[rules]
     } else {
-      console.error(`${name} 字段 rules => ${rules} 不在快捷校验项里`)
+      Log.error(`${name} 字段 rules => ${rules} 不在快捷校验项里`)
       rulelistLog()
       return {}
     }
@@ -95,7 +100,7 @@ export const computedRules = (rules, label, name) => {
   } else if (type === 'object') {
     return rules
   } else {
-    console.warn(`${name} 字段 rules 格式有误`)
+    Log.warn(`${name} 字段 rules 格式有误`)
     return {}
   }
 }

@@ -97,8 +97,8 @@ export const CreateYButton = (ButtonComponent = 'button') => {
           disabled: props.disabled || latestYQueryTable.loading,
         },
         on: {
-          click: this.onClick,
           ...this.$listeners,
+          click: this.onClick,
         }
       }, slots)
     }

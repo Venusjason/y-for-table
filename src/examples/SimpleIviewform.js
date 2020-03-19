@@ -18,7 +18,7 @@ export default {
       <YForm value={this.value} action="11" style="margin-top: 40px" >
         <p>iview form 示例</p>
         <YField label={'名称'} name="name" component={'i-input'} rules={[]} />
-        <YField label={<span>年龄</span>} name="age" component={'i-input'} rules={['required', 'integer']} onBlur={(e) => {
+        <YField name="age" component={'i33-input'} rules={['required', 'integer']} onBlur={(e) => {
           console.log('onBlur', e)
         }} />
         <YField name="money" component={'i-input'} >

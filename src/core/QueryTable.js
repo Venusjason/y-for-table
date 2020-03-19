@@ -4,7 +4,7 @@ import log from '../packages/log'
 
 const ELPagination = Pagination
 
-export const createQueryTable = (TableComponent = Table) => {
+export const CreateQueryTable = (TableComponent = Table) => {
   const { data, ...YElTableJsxProps } = TableComponent.props
   const {
     currentPage: paginationPropsCurrentPage,
@@ -220,6 +220,6 @@ export const createQueryTable = (TableComponent = Table) => {
   return QueryTable
 }
 
-const YQueryTable = createQueryTable()
+const YQueryTable = CreateQueryTable()
 
 export default YQueryTable

@@ -72,13 +72,12 @@ export default {
 
         <YForm value={this.params} label-width="100px" colon inline size="small">
           <YField name="goodsName" label="商品名称" />
-          <YField name="leimu" label={
-            <el-tooltip effect="dark" content="label 提示文字" placement="top-start">
-              <span style="color: green" >类目<i class="el-icon-warning-outline"></i>：</span>
-            </el-tooltip>
-          } clearable component="el-select">
+          <YField name="leimu" label={<div>1122</div>} clearable component="el-select">
             <el-option label={'类目1'} value={1}></el-option>
             <el-option label={'类目2'} value={2}></el-option>
+            <el-tooltip effect="dark" content="label 提示文字" placement="top-start" slot="label">
+              <span style="color: green" >类目<i class="el-icon-warning-outline"></i>：</span>
+            </el-tooltip>
           </YField>
 
           <YField name="priceMin" label="价格区间" rules={[
