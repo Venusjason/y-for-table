@@ -25,7 +25,7 @@ const defaultOpts = {
  * @param {*} Component 类Input组件, 内部必须已经实现了v-model
  * @param {*} fieldContext field上下文
  */
-const CreateVModelComponent = (Component, fieldContext) => {
+export const CreateVModelComponent = (Component, fieldContext) => {
   const { name } = fieldContext
 
   const helperProps = computedFormSameProps(getParentForm(fieldContext), fieldContext)
@@ -62,6 +62,7 @@ const CreateVModelComponent = (Component, fieldContext) => {
 
       // 最高优先级的 component-props
       const firstComponentProps = { ...(fieldContext.$attrs['component-props'] || {}), ...(fieldContext.$attrs.componentProps || {}) }
+      const { class: className, style, ...componentProps } = firstComponentProps
 
       const events = fieldContext.$listeners || {}
 
@@ -86,14 +87,16 @@ const CreateVModelComponent = (Component, fieldContext) => {
       }
 
       return h(Component, {
+        class: className,
+        style,
         props: Object.assign(
           getMyProps(Component, this),
           getMyProps(Component, fieldContext.$attrs),
-          firstComponentProps,
+          componentProps,
           {
             value,
             disabled: helperProps.disabled,
-          }
+          },
         ),
         on: {
           ...events,

@@ -109,6 +109,7 @@ export const createQueryTable = (TableComponent = Table) => {
         })
       },
       refreshList(someParams = {}) {
+        // TODO: 自动取消上一次接口
         if (this.loading) return
         const { currentPage, pageSize } = this.getPaginationProps(someParams)
         this.loading = true

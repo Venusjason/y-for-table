@@ -14,7 +14,7 @@ export default {
 
   render(h) {
     return (
-      <YForm value={this.value} action="11" >
+      <YForm value={this.value} action="11" colon label-width="120px" inline={false} >
         <p>element-ui 示例</p>
         <YField label={'名称'} name="name" component={'el-input'} rules={[]} />
         <YField label={<span>年龄</span>} name="age" component={'el-input'} rules={[
@@ -22,9 +22,10 @@ export default {
           'integer'
         ]} onBlur={(e) => {
           console.log('onBlur', e)
+        }} componentProps={{
+          style: { width: '200px' }
         }}/>
-        <YField name="money" component={'el-input'} >
-          <div slot="label">金钱</div>
+        <YField name="money" component={'el-input'} label="金钱" >
           <div slot="append">元</div>
         </YField>
 

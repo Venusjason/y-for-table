@@ -9,13 +9,16 @@ import {
 } from 'view-design'
 import 'view-design/dist/styles/iview.css'
 import App from './App.vue'
+import {
+  YForm, YField, CreateYButton, YQueryTable
+} from './core/index'
 
-// import YForTable from './packages/index'
-import YForm from './core/Form'
-import YField from './core/Field'
-import { CreateYButton } from './core/Button'
-import YQueryTable from './core/QueryTable'
+// import {
+//   YForm, YField, CreateYButton, YQueryTable
+// } from '../lib/y-for-table.umd'
+// import '../lib/y-for-table.css'
 
+// console.log(YForTable)
 const ELButton = Button
 
 const YButton = CreateYButton(ELButton)
