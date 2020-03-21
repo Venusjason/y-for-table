@@ -1,7 +1,7 @@
 import { Form } from 'element-ui'
 import { cloneDeep } from 'lodash'
 import Path from 'cool-path'
-// import log from '../packages/log'
+// import log from './log'
 
 const ELForm = Form
 

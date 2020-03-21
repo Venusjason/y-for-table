@@ -1,6 +1,6 @@
 import { Pagination, Loading } from 'element-ui'
 import Table from './Table'
-import log from '../packages/log'
+import log from './log'
 
 const ELPagination = Pagination
 

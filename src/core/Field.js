@@ -1,7 +1,7 @@
 import { FormItem } from 'element-ui'
 // import Path from 'cool-path'
 import { merge } from 'lodash'
-import log from '../packages/log'
+import log from './log'
 import {
   getType,
   dasherize,
@@ -10,8 +10,8 @@ import {
   getParentForm,
   // transformDataSource,
   computedFormSameProps,
-} from '../packages/utils'
-import { computedRules } from '../packages/rules'
+} from './utils'
+import { computedRules } from './rules'
 
 const ELFormItem = FormItem
 
@@ -137,8 +137,30 @@ const Field = {
       type: [Object, Array],
       default: () => [],
     },
-    'format-value': {
-      type: [Function, String],
+    /**
+     * 转化方法
+     */
+    'format-functions': {
+      type: Array,
+      validator(value) {
+        let valid = false
+        if (getType(value) === 'array' && value.length === 2) {
+          const [value1, value2] = value
+          if (getType(value1) === 'function' && getType(value2) === 'function') {
+            valid = true
+          }
+        }
+        if (!valid) {
+          log.error(`
+          format-functions 应该是一个数组，必须包含2个相反的数据转化方法, 如：
+          [val => val * 100, val => val / 100]
+          `)
+        }
+        return valid
+      },
+      default: () => [
+        val => val, val => val
+      ]
     },
     // 表单域态 edit、preview、disabled
     fieldStatus: {

@@ -1,7 +1,7 @@
 import {
   getType, getLatestYQueryTable, getMySlots, getParentForm
-} from '../packages/utils'
-import log from '../packages/log'
+} from './utils'
+import log from './log'
 
 export const CreateYButton = (ButtonComponent = 'button') => {
   if (['object', 'string'].indexOf(getType(ButtonComponent)) === -1) {
@@ -32,7 +32,7 @@ export const CreateYButton = (ButtonComponent = 'button') => {
       onClick(ev) {
         if (this.$listeners.click) {
           // 调用时声明了 click 采用调用声明
-          return this.$listeners.click
+          this.$listeners.click(ev)
         } else {
           if (!this.form) {
             if (process.env.NODE_ENV === 'development') {
