@@ -8,6 +8,8 @@
 
 ```
 npm install @vue/babel-preset-jsx @vue/babel-helper-vue-jsx-merge-props babel-plugin-component -D
+
+npm i element-ui y-for-table --save
 ```
 .babelrc.js 里配置webpack编译jsx和按需导入组件库
 
@@ -44,7 +46,7 @@ module.exports = {
 touch installELementUi.js
 ```
 导入element ui组件
-```
+```javascript
 import {
   Pagination,
   Dialog,
@@ -225,10 +227,13 @@ export const YFieldOpts = {
 
 main.js
 
-```
+```javascript
 import Vue from 'vue'
 import Vue from 'vue'
 import { Button } from 'element-ui'
+import {
+  YForm, YField, CreateYButton, YQueryTable
+} from 'y-for-table'
 import 'y-for-table/lib/index.css'
 import InstallElement, { YFieldOpts } from './installElement'
 
