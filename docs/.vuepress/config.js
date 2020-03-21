@@ -32,21 +32,29 @@ module.exports = {
           }
         ]
       },
-      // {
-      //   title: '使用说明',
-      //   path: '/apis/',
-      //   collapsable: false,
-      //   children: [
-      //     {
-      //       title: '配置option',
-      //       path: '/apis/option',
-      //     },
-      //     {
-      //       title: '表单域field',
-      //       path: '/apis/field',
-      //     },
-      //   ],
-      // },
+      {
+        title: '组件',
+        path: '/yComponents/',
+        collapsable: false,
+        children: [
+          {
+            title: 'YForm',
+            path: '/yComponents/YForm',
+          },
+          {
+            title: 'YField',
+            path: '/yComponents/YField',
+          },
+          {
+            title: 'YButton',
+            path: '/yComponents/YButton',
+          },
+          {
+            title: 'YQueryTable',
+            path: '/yComponents/YQueryTable',
+          },
+        ],
+      },
     ],
     displayAllHeaders: true,
   },
