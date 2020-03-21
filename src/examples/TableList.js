@@ -1,4 +1,27 @@
-import axios from 'axios'
+const serveList = (params) => {
+  console.log('查询参数', params)
+  return new Promise(function(resolve) {
+    const delay = Math.ceil(Math.random() * 1000)
+    setTimeout(() => {
+      const list = []
+      for (let i = 0; i < 10; i++) {
+        const id = Math.ceil(Math.random() * 100)
+        const status = Math.ceil(Math.random() * 2)
+        const price = Math.ceil(Math.random() * 999)
+        list.push({
+          id,
+          name: `我是编号${id}`,
+          status,
+          price,
+        })
+      }
+      resolve({
+        total: 92,
+        list
+      })
+    }, delay)
+  })
+}
 
 export default {
 
@@ -27,16 +50,18 @@ export default {
         activityCode: '11111111',
         ...this.params
       }
-      const res = await axios.get('http://yapi.ywwl.org/mock/270/admin/pageOrder/list', { params: params1 })
+      const res = await serveList(params1)
       return {
-        data: res.data.data.list,
-        total: res.data.total
+        data: res.list,
+        total: res.total
       }
     }
 
     const columns = [
       { type: 'selection' },
-      { prop: 'distributorNickName', label: '分销员昵称' },
+      { prop: 'id', label: 'id' },
+      { prop: 'name', label: '昵称' },
+      { prop: 'price', label: '价格' },
       {
         label: '订单状态', render: ({ row }) => {
           const STATUS = {
@@ -46,8 +71,6 @@ export default {
           return STATUS[row.status]
         }
       },
-      { prop: 'price', label: '售价' },
-      { prop: 'expressNumber', label: '快递单号' },
       {
         label: '操作',
         render: ({ row }) => (
