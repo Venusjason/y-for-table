@@ -19,7 +19,7 @@ queryForm、Pagination产生查询列表的接口的查询条件，接口执行�
 
 #### vue form
 
-vue 提供了废仓便捷的指令 `v-model`, 似乎开发vue的form比起react那一套要简洁不少。那么我们面临的业务表单往往不仅仅是`v-model`这么简单：
+vue 提供了非常便捷的指令 `v-model`, 似乎开发vue的form比起react那一套要简洁不少。那么我们面临的业务表单往往不仅仅是`v-model`这么简单：
 
 - 多字段联动
 - 校验规则联动
