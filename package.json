@@ -1,6 +1,6 @@
 {
   "name": "y-for-table",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "vue form table 中后台解决方案",
   "private": false,
   "main": "lib/index.umd.min.js",

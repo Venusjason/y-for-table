@@ -213,7 +213,7 @@ const InstallElement = (Vue) => {
   Vue.prototype.$message = Message
 }
 
-export defalut InstallElement
+export default InstallElement
 
 export const YFieldOpts = {
   registerComponents: {
