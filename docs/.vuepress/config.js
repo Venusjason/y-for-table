@@ -12,7 +12,7 @@ module.exports = {
       // { text: '组件', link: '/' },
       // { text: '使用手册', link: '/' },
       // { text: '教程', link: '/' },
-      { text: 'Github', link: 'https://github.com/Venusjason/vuejs-form-creator' },
+      { text: 'Github', link: 'https://github.com/Venusjason/y-for-table' },
     ],
     sidebar: [
       {

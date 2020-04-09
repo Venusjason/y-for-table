@@ -1,6 +1,6 @@
 ### YQueryTable
 
-YQueryTable 只有2个api，设计非常简介
+YQueryTable 只有2个api，设计非常简洁
 
 - columns
 - serve
