@@ -1,6 +1,7 @@
 
+import AsyncValidator from 'async-validator'
 import { getType } from '../packages/utils'
-import Field from './Field'
+import Field, { ITrigger } from './Field'
 
 export interface IFormState {
   fields: IFormFieldItem[];
@@ -49,6 +50,26 @@ export default class Form {
       } else {
         field.update()
       }
+    })
+  }
+
+  /**
+   * 校验field
+   */
+  validateField(name: string, trigger: ITrigger, callback: Function) {
+    const fields = this.fields.filter(field => field.name === name)
+    if (fields.length === 0) return
+    fields.forEach(field => {
+      this.validate(field)
+    })
+  }
+
+  validate(field: Field) {
+    const { rules, value } = field
+    const descriptor = {}
+    const rules1 = (rules || []).map(rule => {
+      const { trigger, ...rest } = rule
+      return rest
     })
   }
 

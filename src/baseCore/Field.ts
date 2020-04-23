@@ -1,9 +1,11 @@
+
+import { RuleItem } from 'async-validator'
 import Form from './Form'
 
 export interface IFormFieldItem {
   name: string,
   value: any,
-  rules?: [],
+  rules?: RuleItem[],
   label?: string | any,
   component?: any,
   dirty?: boolean;
@@ -11,6 +13,8 @@ export interface IFormFieldItem {
   visited?: boolean;
   error?: string | undefined;
 }
+
+export type ITrigger = '' | 'blur' | 'change'
 
 export default class Field {
 
@@ -33,6 +37,10 @@ export default class Field {
 
   onChange(value: any) {
     this.formInstance.onFieldChange(this.name, value)
+  }
+
+  validate(trigger: ITrigger, callback: Function) {
+
   }
 
 }
