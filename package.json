@@ -5,7 +5,7 @@
   "private": false,
   "repository": {
     "type": "git",
-    "url" : "https://github.com/Venusjason/y-for-table.git"
+    "url": "https://github.com/Venusjason/y-for-table.git"
   },
   "main": "lib/index.umd.min.js",
   "scripts": {
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@types/rollup": "^0.54.0",
     "@types/rollup-plugin-node-resolve": "^4.1.0",
+    "@types/typescript": "^2.0.0",
     "@types/uglify-es": "^3.0.0",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "@vue/babel-preset-jsx": "^1.1.2",
@@ -51,7 +52,10 @@
     "rollup-plugin-css-only": "^2.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.4",
+    "ts-loader": "^7.0.1",
+    "typescript": "^3.8.3",
     "uglify-es": "^3.3.9",
+    "vue-property-decorator": "^8.4.1",
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.4.0"
   },
