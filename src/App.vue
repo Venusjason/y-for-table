@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <SimpleForm />
-    <SimpleIviewform />
-    <TableList />
+    <SimpleForm v-if="isShow" />
+    <SimpleIviewform v-if="isShow" />
+    <TableList v-if="isShow" />
+    <BaseForm />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import SimpleForm from './examples/SimpleForm'
 import SimpleIviewform from './examples/SimpleIviewform'
 import TableList from './examples/TableList'
+import BaseForm from './vue/examples/index'
 
 export default {
   name: 'App',
@@ -17,6 +19,12 @@ export default {
     SimpleForm,
     SimpleIviewform,
     TableList,
+    BaseForm,
+  },
+  data() {
+    return {
+      isShow: false
+    }
   }
 }
 </script>

@@ -1,46 +1,68 @@
+import {
+  IForm, IField, IFormFieldItem, ITrigger
+} from './interfaces'
 
-import { RuleItem } from 'async-validator'
-import Form from './Form'
-
-export interface IFormFieldItem {
-  name: string,
-  value: any,
-  rules?: RuleItem[],
-  label?: string | any,
-  component?: any,
-  dirty?: boolean;
-  touched?: boolean;
-  visited?: boolean;
-  error?: string | undefined;
-}
-
-export type ITrigger = '' | 'blur' | 'change'
-
-export default class Field {
-
-  formInstance: Form
+export default class Field implements IField {
+  formInstance: IForm
 
   name: string = ''
+
   value: any = undefined
+
   rules: [] = []
+
   label: string = ''
 
-  constructor(opt: IFormFieldItem, form: Form) {
+  constructor(opt: IFormFieldItem, form: IForm) {
     this.name = opt.name
-    form.addField(this)
     this.formInstance = form
+    this.LIFECYCLE_INIT()
   }
 
-  update() {
-    this.value = this.formInstance.value[this.name]
+
+  /**
+   * 字段初始化
+   */
+  LIFECYCLE_INIT() {
+    this.formInstance.addField(this)
   }
 
-  onChange(value: any) {
+  /**
+   * 交互触发
+   */
+  LIFECYCLE_INPUT_CHANGE(value: any) {
     this.formInstance.onFieldChange(this.name, value)
   }
 
-  validate(trigger: ITrigger, callback: Function) {
-
+  /**
+   * 字段状态发生变化时触发 外部更新导致
+   */
+  LIFECYCLE_CHANGE(value: any) {
+    this.value = value
   }
 
+  /**
+   * 校验时触发
+   */
+  LIFECYCLE_VALIDATE() {
+    console.log(this)
+  }
+
+  /**
+   * 字段挂载时触发
+   */
+  LIFECYCLE_MOUNT() {
+    console.log(this)
+  }
+
+  /**
+   * 字段卸载时触发
+   */
+  LIFECYCLE_UN_MOUNT() {
+    this.formInstance.removeField(this)
+  }
+
+  validate(trigger: ITrigger, callback: Function) {
+    this.LIFECYCLE_VALIDATE()
+  }
 }

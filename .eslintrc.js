@@ -216,7 +216,11 @@ module.exports = {
           'balanced': true
         }
       }
-    ]
+    ],
+    "max-classes-per-file": [0],
+    'no-trailing-spaces': [0],
+    'class-methods-use-this': [0],
+    'object-shorthand': [0],
   },
   parserOptions: {
     parser: 'babel-eslint',

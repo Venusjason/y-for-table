@@ -55,8 +55,9 @@
     "ts-loader": "^7.0.1",
     "typescript": "^3.8.3",
     "uglify-es": "^3.3.9",
-    "vue-property-decorator": "^8.4.1",
+    "vue-property-decorator": "^8.4.2",
     "vue-template-compiler": "^2.6.11",
+    "vue-tsx-support": "^2.3.3",
     "vuepress": "^1.4.0"
   },
   "eslintConfig": {
