@@ -26,7 +26,7 @@
     "cool-path": "^0.1.24",
     "core-js": "^3.6.4",
     "element-ui": "^2.13.0",
-    "highlight.js": "^9.18.1",
+    "highlight.js": "^10.4.1",
     "lodash": "^4.17.15",
     "view-design": "^4.1.3",
     "vue": "^2.6.11"
